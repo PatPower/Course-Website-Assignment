@@ -56,3 +56,15 @@
 *{
   background: steelblue;
 }
+
+@media all and (max-width: 640px) {
+  .SignInBox{
+    width: 20vw;
+  }
+
+  .LogInButtons{
+    border: solid;
+    width: 50%;
+  }
+
+}

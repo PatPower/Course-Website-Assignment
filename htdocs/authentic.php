@@ -12,7 +12,7 @@ if ($con->connect_error){
   die("Connection Failed")
 }
 
-$query = 'select '.$_POST['User'].', '.$POST['Pass'].' from '.$tableName
+$query = 'select username, password from '.$tableName.'where username =='.$_POST['User'].' and password =='.$_POST['Pass']
 
 $result = $conn->query($query)
 
