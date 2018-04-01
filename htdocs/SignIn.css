@@ -1,0 +1,6 @@
+.SignInBox {
+  border: solid;
+  width: 20vw;
+  text-align: center;  // horizontal alignment of text-align
+  margin: auto;  // center the box containing sign-in form
+}
