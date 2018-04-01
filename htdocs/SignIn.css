@@ -14,9 +14,10 @@
 
 .SignInBox {
   border: solid;
-  width: 20vw;
+  width: 40vw;
   text-align: center;  // horizontal alignment of text-align
   margin: auto;
+  font-size: 150%;
 }
 
 
@@ -26,7 +27,7 @@
 }
 
 .LogInButtons{
-  width: 50%;
+  width: 40%;
   margin: auto;
 }
 
@@ -37,6 +38,7 @@
 .SignInBox input[type="submit"] {
   border: solid 1px;
   float: left;
+  font-size: 99%;
 }
 
 .SignInBox input[type="submit"]:hover, .SignInBox a:hover {
