@@ -22,7 +22,10 @@
         <br>
         <div>Password <input type="text" name="Pass" placeholder="Enter UTor Password"></div>
         <br>
-        <input type="submit" Value="submit">
+        <div class = "LogInButtons">
+          <input type="submit" Value="Submit">
+          <a href="#">New User</a> <br>
+      </div>
       </form>
     </div>
 

@@ -19,9 +19,15 @@
   margin: auto;
 }
 
+
 .SignInBox input[type="text"] {
   color: white;
   border: solid 1px;
+}
+
+.LogInButtons{
+  width: 50%;
+  margin: auto;
 }
 
 ::placeholder {
@@ -30,10 +36,18 @@
 
 .SignInBox input[type="submit"] {
   border: solid 1px;
+  float: left;
 }
 
-.SignInBox input[type="submit"]:hover {
+.SignInBox input[type="submit"]:hover, .SignInBox a:hover {
   background-color: #75c7f0;
+}
+
+.SignInBox a {
+  border: solid 1px;
+  text-decoration: none;
+  color: black;
+  float: right;
 }
 
 
