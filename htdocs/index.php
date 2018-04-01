@@ -17,14 +17,14 @@
     <!--SignIn box for signing in-->
     <div class = 'SignInBox'>
       <div id="FormName"><p>Login</p></div>
-        <form action="authentic.php" method = 'post'>
-          <div>Username <input type="text" name="User" placeholder="Enter UTor Username"></div>
-          <br>
-          <div>Password <input type="text" name="Pass" placeholder="Enter UTor Password"></div>
-          <br>
-          <div class = "LogInButtons">
-            <input type="submit" Value="Submit">
-            <a href="#">New User</a> <br>
+      <form action="authentic.php" method = 'post'>
+        <div>Username <input type="text" name="User" placeholder="Enter UTor Username"></div>
+        <br>
+        <div>Password <input type="text" name="Pass" placeholder="Enter UTor Password"></div>
+        <br>
+        <div class = "LogInButtons">
+          <input type="submit" Value="Submit">
+          <a href="#">New User</a> <br>
       </div>
       </form>
     </div>
