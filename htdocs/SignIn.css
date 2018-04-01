@@ -1,3 +1,17 @@
+.webpageInfo {
+  margin: auto;
+  font-family: 'Raleway', sans-serif;
+  width: 32vw;
+  text-align: center; // horizontal text alignment
+}
+
+#CourseCode {
+  font-size: 8.0vw;
+  height: 35vh;
+  border: solid;
+  border-color: white; // make this the same colour as the background
+}
+
 .SignInBox {
   border: solid;
   width: 20vw;
