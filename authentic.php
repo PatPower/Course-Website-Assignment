@@ -1,27 +1,36 @@
 <?php
 
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', 'root');
-define('DB_DATABASE', 'database');
-$db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "cscb20w18_sampso29";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
-if ($db->connect_error) {
-    die("Connection failed: " . $db->connect_error);
-} 
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+echo "Connected successfully<br>";
 
-$myusername = mysqli_real_escape_string($db,$_POST['User']);
-$mypassword = mysqli_real_escape_string($db,$_POST['Pass']); 
+$myusername = mysqli_real_escape_string($conn, $_POST['User']);
+$mypassword = mysqli_real_escape_string($conn, $_POST['Pass']);
 
-$query = "SELECT username,password FROM login WHERE username = '$myusername' and password = '$mypassword'";
-$result = $db->query($query);
-$rowcount=mysqli_num_rows($result);
-
-if ($rowcount > 0) {
-  echo 'Connection Successful';
+$query = "SELECT username FROM login WHERE  username = '$myusername' and password = '$mypassword'";
+$result = mysqli_query($conn, $query);
+if ($result) {
+    $rowcount = mysqli_num_rows($result);
+    if ($rowcount > 0) {
+        echo 'Connection Successful';
+    } else {
+        echo 'Incorrect Username or Password';
+    }
 } else {
-  echo $query.'<br>';
-  echo 'Incorrect Username or Password';
+    
+    echo 'Error parsing the query<br>';
+    echo $query . '<br>';
+    echo $myusername . '<br>';
+    echo $mypassword . '<br>';
 }
 ?>
