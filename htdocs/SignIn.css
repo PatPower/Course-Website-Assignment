@@ -1,5 +1,5 @@
 .webpageInfo {
-  margin: auto;
+  margin: auto; // center in the middle of the page
   font-family: 'Raleway', sans-serif;
   width: 32vw;
   text-align: center; // horizontal text alignment
@@ -9,12 +9,34 @@
   font-size: 8.0vw;
   height: 35vh;
   border: solid;
-  border-color: white; // make this the same colour as the background
+  border-color: steelblue; // make this the same colour as the background
 }
 
 .SignInBox {
   border: solid;
   width: 20vw;
   text-align: center;  // horizontal alignment of text-align
-  margin: auto;  // center the box containing sign-in form
+  margin: auto;
+}
+
+.SignInBox input[type="text"] {
+  color: white;
+  border: solid 1px;
+}
+
+::placeholder {
+  color: white;
+}
+
+.SignInBox input[type="submit"] {
+  border: solid 1px;
+}
+
+.SignInBox input[type="submit"]:hover {
+  background-color: #75c7f0;
+}
+
+
+*{
+  background: steelblue;
 }

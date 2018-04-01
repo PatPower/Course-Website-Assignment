@@ -16,16 +16,16 @@
 
     <!--SignIn box for signing in-->
     <div class = 'SignInBox'>
-      <div><p>Login</p></div>
+      <div id="FormName"><p>Login</p></div>
       <form method = 'post'>
-        <div id="Username">Username <input type="text" name="User" placeholder="Enter UTor Username"></div>
+        <div>Username <input type="text" name="User" placeholder="Enter UTor Username"></div>
         <br>
-        <div id="Password ">Password <input type="text" name="Pass" placeholder="Enter UTor Password"></div>
+        <div>Password <input type="text" name="Pass" placeholder="Enter UTor Password"></div>
         <br>
-        <div id="Submit"><input type="submit" Value="submit"></div>
+        <input type="submit" Value="submit">
       </form>
-
     </div>
+
   </body>
 
 </html>
