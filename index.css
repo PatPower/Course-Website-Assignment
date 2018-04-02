@@ -30,7 +30,10 @@
   height: 30%;
   width: 100%;
 }
-
+.center {
+    text-align: center;
+    color: red;
+}
 .secondBlock {
   height:auto; /*height was 100vh*/
   background-color: LightSkyBlue;
@@ -252,7 +255,6 @@
 
 .table {
   display: table;
-
  }
 
 .Cell {

@@ -16,7 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result) {
         $rowcount = mysqli_num_rows($result);
         if ($rowcount > 0) {
-            header("Location: website\index.html");
+             $_SESSION['name'] = $myusername;
+            header("Location: indexMain.php");
         } else {
             $_SESSION['error'] = "Incorrect username or password";
         }

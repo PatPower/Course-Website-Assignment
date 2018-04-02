@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE HTML>
 <html>
 
@@ -28,6 +31,9 @@
     <div id='floater'></div>
     <p class='titleName'>CSCB20</p>
     <p>Introduction to Databases and Web Applications | Winter 2018</p>
+     <?php
+        echo '<div class="center">Welcome '.$_SESSION['name'].'</div>';
+    ?>
   </div>
   <div class='innerSecondBlock'>
     <div class='block'>
