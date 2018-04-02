@@ -31,9 +31,14 @@
     <div id='floater'></div>
     <p class='titleName'>CSCB20</p>
     <p>Introduction to Databases and Web Applications | Winter 2018</p>
-     <?php
-        echo '<div class="center">Welcome '.$_SESSION['name'].'</div>';
-    ?>
+    <br>
+    <div class="loginInfo">
+        <?php
+            echo '<br><p>Welcome '.$_SESSION['name'].'!</p>';
+            echo '<br><p>User Name: '.$_SESSION['username'].'</p>';
+            echo '<p>Account Type: '.$_SESSION['accountType'].'</p>';
+        ?>
+    </div>
   </div>
   <div class='innerSecondBlock'>
     <div class='block'>

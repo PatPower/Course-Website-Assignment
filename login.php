@@ -11,12 +11,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $myusername = mysqli_real_escape_string($conn, $_POST['User']);
     $mypassword = mysqli_real_escape_string($conn, $_POST['Pass']);
 
-    $query = "SELECT username FROM login WHERE  username = '$myusername' and password = '$mypassword'";
+    $query = "SELECT * FROM login WHERE  username = '$myusername' and password = '$mypassword'";
     $result = mysqli_query($conn, $query);
     if ($result) {
         $rowcount = mysqli_num_rows($result);
+        $user = $result->fetch_assoc();
         if ($rowcount > 0) {
-             $_SESSION['name'] = $myusername;
+            $_SESSION['username'] = $user["username"];
+            $_SESSION['name'] = $user["FName"];
+            $_SESSION['accountType'] = $user["accountType"];
             header("Location: indexMain.php");
         } else {
             $_SESSION['error'] = "Incorrect username or password";
