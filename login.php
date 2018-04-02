@@ -50,14 +50,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class = 'SignInBox'>
             <div id="FormName"><p>Login</p></div>
             <form action="" method = 'post'>
-                
+
                 <div>Username <input type="text" name="User" value="<?php if (isset($_POST['User'])) echo $_POST['User']; ?>"></div>
                 <br>
                 <div>Password <input type="text" name="Pass"></div>
                 <br>
                 <div class = "LogInButtons">
                     <input type="submit" Value="Submit">
-                    <a href="#">New User</a> <br>
+                    <a href="newUser.php">New User</a> <br>
                 </div>
                 <div id="errMsg">
                     <?php
