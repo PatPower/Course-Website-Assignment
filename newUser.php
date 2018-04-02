@@ -20,14 +20,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
       if ($rowcount > 0) {
         $_SESSION['error'] = "Username already in use!";
       } else {
-          $addUser1 = "INSERT INTO login (FName, LName, username, password, accountType)"
-          $addUser2 = 'VALUES ('$fname','$lname','$uname', '$pass','$acctype')'
-          $addNewUser = mysqli_query($conn, $addUser1.$addUser2)
+          $addUser1 = "INSERT INTO login (FName, LName, username, password, accountType) VALUES ('$fname','$lname','$uname', '$pass','$acctype')";
+          $addNewUser = mysqli_query($conn, $addUser1);
           $_SESSION['name'] = $uname;
           header("Location: indexMain.php");
       }
-  } else {
-
+    }
 }
 
 ?>
