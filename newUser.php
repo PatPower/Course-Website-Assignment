@@ -22,7 +22,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
       } else {
           $addUser1 = "INSERT INTO login (FName, LName, username, password, accountType) VALUES ('$fname','$lname','$uname', '$pass','$acctype')";
           $addNewUser = mysqli_query($conn, $addUser1);
-          $_SESSION['name'] = $uname;
+          $_SESSION['username'] = $uname;
+          $_SESSION['name'] = $fname;
+          $_SESSION['accountType'] = $acctype;
           header("Location: indexMain.php");
       }
     }
