@@ -1,6 +1,9 @@
 .firstBlock {
   height:65vh;
   background-color: steelblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .firstBlock p {
@@ -30,9 +33,18 @@
   height: 30%;
   width: 100%;
 }
-.center {
-    text-align: center;
-    color: red;
+.loginInfo {
+    background: rgba(255,255,255,0.7);
+    height:120px;
+    border-radius: 25px;
+    border-color: black;
+    border-style: solid;
+    width: 420px;
+}
+.loginInfo p {
+    color: black;
+    margin:0px;
+    padding:0px;
 }
 .secondBlock {
   height:auto; /*height was 100vh*/
