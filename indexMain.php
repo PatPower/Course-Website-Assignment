@@ -1,5 +1,9 @@
 <?php
     session_start();
+
+    if (empty($_SESSION['username'])) {
+      header("Location: login.php");
+    }
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -18,6 +22,7 @@
     <div id="navBar" class="nav">
       <a id="barTitle" href="index.html">CSCB20 Course Website</a>
       <a id="empty" href="index.html"></a>
+      <a href="logout.php" name='logout' value='out'>Logout</a>
       <a onclick="smoothScroll('contact')">Contact</a>
       <a onclick="smoothScroll('labs')">Labs</a>
       <a onclick="smoothScroll('assignments')">Assignments</a>
