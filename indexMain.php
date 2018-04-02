@@ -410,12 +410,13 @@ cannot use table element -->
     </div>
     <div class="middle">
       <p class="bold"> Course Resources</p class="bold">
-      <a href="#Syllabus">Syllabus</a><<br>
+      <a href="#Syllabus">Syllabus</a><br>
       <a href='https://code.tutsplus.com/articles/sql-for-beginners--net-8200'>MySQL Tutorial (Online)</a><br>
       <a href='https://www.piazza.com'>Piazza</a><br>
       <a href='https://markus.utsc.utoronto.ca/cscb20w18/?locale=en'>Markus</a><br>
       <a href='http://www.utsc.utoronto.ca/iits/computer-labs'>UTSC Labs</a><br>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc0_2lybZw9Zwlm3fKtkMDegHrP0dSbH_LUAMaMnx5vhko6Yg/viewform">Anonymous Feedback</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc0_2lybZw9Zwlm3fKtkMDegHrP0dSbH_LUAMaMnx5vhko6Yg/viewform">Anonymous Feedback</a><br>
+      <a href="http://www.utsc.utoronto.ca/cms/faculty-of-computer-science">UTSC Computer Science Faculty</a><br>
     </div>
     <br>
     <div class="vline"></div>
