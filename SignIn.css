@@ -19,7 +19,7 @@
 }
 
 
-.SignInBox input[type="text"] {
+.SignInBox input[type="text"], .NewUserBox input[type="text"] {
   color: white;
   border: solid 1px;
 }
@@ -33,13 +33,13 @@
   color: white;
 }
 
-.SignInBox input[type="submit"] {
+.SignInBox input[type="submit"], .NewUserBox input[type="submit"] {
   border: solid 1px;
   float: left;
   font-size: 99%;
 }
 
-.SignInBox input[type="submit"]:hover, .SignInBox a:hover {
+.SignInBox input[type="submit"]:hover, .SignInBox a:hover, .NewUserBox input[type="submit"]:hover {
   background-color: #75c7f0;
 }
 
@@ -54,6 +54,33 @@
     color:  #cc0033;
     font-weight: bold;
     font-size: 20px;
+}
+
+/*New User Page Settings*/
+
+.NewUserBox {
+  text-align: center;
+  line-height: 2;
+}
+
+.NewUHeaderStuff {
+  line-height: 1;
+}
+
+.NewUserBox span + span { /*meaning every span preceeded by a span*/
+  margin-left: 5px;
+}
+
+.AccType {
+  margin: auto;
+}
+
+.NewUSubButton {
+  margin: auto;
+}
+
+.NewUserBox input[type="submit"] {
+  float: none;
 }
 
 *{

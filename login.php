@@ -11,13 +11,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $myusername = mysqli_real_escape_string($conn, $_POST['User']);
     $mypassword = mysqli_real_escape_string($conn, $_POST['Pass']);
 
-    $query = "SELECT username FROM login WHERE  username = '$myusername' and password = '$mypassword'";
+    $query = "SELECT * FROM login WHERE  username = '$myusername' and password = '$mypassword'";
     $result = mysqli_query($conn, $query);
     if ($result) {
         $rowcount = mysqli_num_rows($result);
+        $user = $result->fetch_assoc();
         if ($rowcount > 0) {
-             $_SESSION['name'] = $myusername;
-            header("Location: indexMain.php");
+            $_SESSION['username'] = $user["username"];
+            $_SESSION['name'] = $user["FName"];
+            $_SESSION['accountType'] = $user["accountType"];
+            header("Location: index.php");
         } else {
             $_SESSION['error'] = "Incorrect username or password";
         }
@@ -50,14 +53,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class = 'SignInBox'>
             <div id="FormName"><p>Login</p></div>
             <form action="" method = 'post'>
-                
+
                 <div>Username <input type="text" name="User" value="<?php if (isset($_POST['User'])) echo $_POST['User']; ?>"></div>
                 <br>
                 <div>Password <input type="text" name="Pass"></div>
                 <br>
                 <div class = "LogInButtons">
                     <input type="submit" Value="Submit">
-                    <a href="#">New User</a> <br>
+                    <a href="newUser.php">New User</a> <br>
                 </div>
                 <div id="errMsg">
                     <?php

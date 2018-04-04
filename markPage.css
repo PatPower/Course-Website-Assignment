@@ -1,0 +1,253 @@
+#barTitle {
+  float: left;
+  font-size:15px;
+}
+
+#barTitle a:hover {
+    background: rgba(0,0,0,0);
+}
+.center {
+    text-align: center;
+}
+.centerInfo {
+    margin-left: 20px;
+    background: rgba(0,0,0,0.1);
+    width: 200px;
+    padding: 10px;
+}
+.block {
+  width: 95%;
+  height: 150px;
+  border-radius: 25px;
+  background: rgba(255,255,255,0.7);
+  margin: 10px;
+}
+
+.block p {
+    text-align: center;
+    margin: 0px;
+    margin-top: 12px;
+    padding: 0px;
+    color: black;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height:auto;
+}
+.panel {
+    height:auto;
+    border-radius: 35px;
+    width: 95%;
+    background-color: lightskyblue;
+    margin-bottom: 30px;    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.pageTitle {
+    text-align: center;
+    font-size: 40px;
+    color: white;
+    padding-top: 4vw;
+}
+.vline {
+  width: 1px;
+  background-color: white;
+  height: 150px;
+  display: inline-block;
+}
+
+.nav .icon {
+  display: none;
+}
+
+.responsive .icon {
+  display: none;
+}
+
+.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    position: fixed;
+    cursor: pointer;
+    background: rgba(0,0,0,0.2);
+}
+
+.nav a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    float: right;
+}
+
+.responsive a:hover {
+  background: rgba(0,0,0,0.3);
+}
+
+.responsive {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    position: fixed;
+    background: rgba(0,0,0,0.2);
+}
+
+.responsive a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    float: right;
+}
+
+.nav a:hover {
+  background: rgba(0,0,0,0.3);
+}
+
+#empty {
+  height: 17px;
+  display: none;
+}
+
+footer {
+  height: auto;
+  width: 100%;
+  border-style: solid;
+  border-left-style: none;
+  border-right-style: none;
+  border-color: black;
+  background-color: steelblue;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  box-sizing: border-box;
+
+  bottom: 0;
+  color: white;
+  display: flex;
+  flex-wrap:wrap;
+}
+
+footer p {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+footer a {
+  font-size: 13px;
+}
+footer a:hover {
+  font-size: 13px;
+  text-decoration: underline;
+}
+
+footer .middle {
+  margin-left: 10px;
+  width: 22vw;
+  color: AliceBlue;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer .middle p {
+  margin: 0px;
+  padding: 0px;
+  padding-top: 2px;
+}
+
+footer .middle a {
+  color: white;
+  text-decoration: none;
+}
+
+footer .middle a:hover {
+  background: rgba(0,0,0,0.2);
+}
+
+footer .right {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+}
+
+footer .right h2 {
+  text-align: center;
+}
+
+footer .right p {
+  margin: 0px;
+  padding: 0px;
+
+}
+
+footer h2 {
+  width: 200px;
+  padding: 0px;
+  margin: 0px;
+  text-align: left;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: steelblue;
+  font-family: 'Cabin', sans-serif;
+}
+
+@media screen and (max-width:1000px)
+{
+ .left, .vline{
+   display: none
+ }
+  .right {
+    margin-top: 20px;
+  }
+  .nav .icon {
+    float: right;
+    display: block;
+  }
+  .nav a:not(:first-child):not(:last-child) {
+    display: none;
+  }
+  .responsive {
+    position: fixed;
+  }
+  .responsive .icon {
+    position: absolute;
+    display: block;
+    right: 0;
+    top: 0;
+  }
+  .responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+    position: relative;
+  }
+  .responsive #empty {
+    display: block;
+  }
+}
+
+@media all and (max-width:640px) {
+  .navLink {
+      margin-right: 10vw;
+  }
+}
+@media all and (max-width:480px) {
+  .navLink {
+      margin-right: 6vw;
+  }
+}
