@@ -31,6 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
+
+
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="markPage.css">
@@ -53,6 +55,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <a href="index.php#home">Home</a>
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="navFunct()">&#9776;</a>
         </div>
+
+
+
+
         <div class="page">
             <div class="pageTitle">Marks</div>
             <br>
@@ -63,9 +69,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo '<br>Account Type: ' . $_SESSION['accountType'] . '</div>';
                 ?>
                 <br>
+
+
                 <div class="block"><p>Add Mark</p>
+                  <!--student dropdown-->
+                    <span> Student:
                     <?php
-                        $query = "SELECT username FROM login";
+                        $query = "SELECT username FROM login WHERE accountType='student'";
                         $result = mysqli_query($conn, $query);
                         echo "<select>";
                         while ($row = $result->fetch_assoc()) {
@@ -73,6 +83,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         }
                         echo "</select>";
                     ?>
+                  </span>
+                  <!--course work dropdown-->
+                  <span> Course Work:
                     <?php
                         echo "<select>";
                         for ($x = 0; $x < 5; $x++) {
@@ -80,10 +93,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         }
                         echo "</select>";
                     ?>
+                  </span>
+                  <!--enter user mark-->
+                  <span>Mark:<input type="number" name="AddMarks" min="0" max="100" placeholder="PERCENTAGE MARK"></span>
                 </div>
+
+
                 <div class="block"><p>Update Mark</p>
+                  <!--student dropdown-->
+                  <span>Student:
                     <?php
-                        $query = "SELECT username FROM login";
+                        $query = "SELECT username FROM login WHERE accountType='student'";
                         $result = mysqli_query($conn, $query);
                         echo "<select>";
                         while ($row = $result->fetch_assoc()) {
@@ -91,10 +111,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         }
                         echo "</select>";
                     ?>
+                  </span>
+                    <!--course work dropdown-->
+                    <span> Course Work:
+                      <?php
+                          echo "<select>";
+                          for ($x = 0; $x < 5; $x++) {
+                              echo "<option>".$x."</option>";
+                          }
+                          echo "</select>";
+                      ?>
+                    </span>
+                    <!--enter user mark-->
+                    <span>Mark:<input type="number" name="AddMarks" min="0" max="100" placeholder="PERCENTAGE MARK"></span>
                 </div>
-                    
-                <div class="block"><p>Add Course Work</p></div>
-                <div class="block"><p>Search for Students Work</p></div>
+
+
+                <div class="block"><p>Add Course Work</p>
+                  <span>Assignment Name:<input type="text" name="NewAss"></span>
+                  <span><input type="submit" Value="Submit"></span>
+                </div>
+
+
+                <div class="block"><p>Search for Students Work</p>
+                  <!--student dropdown-->
+                    <span> Student
+                    <?php
+                        $query = "SELECT username FROM login WHERE accountType='student'";
+                        $result = mysqli_query($conn, $query);
+                        echo "<select>";
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<option name='student' value=".$row["username"].">".$row["username"]."</option>";
+                        }
+                        echo "</select>";
+                    ?>
+                    <span><input type="submit" Value="Submit"></span>
+                  </span>
+
+                </div>
+
+
             </div>
             <footer>
                 <div class="left">

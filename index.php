@@ -43,7 +43,8 @@
             echo '<br><p>User Name: '.$_SESSION['username'].'</p>';
             echo '<p>Account Type: '.$_SESSION['accountType'].'</p>';
         ?>
-        <a href="markPage.php"> <br><p>Click here for mark info<p></a>
+        <a href="markPage.php"><p>Click here for mark info<p></a>
+  
     </div>
   </div>
   <div class='innerSecondBlock'>
