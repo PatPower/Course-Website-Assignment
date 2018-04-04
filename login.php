@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['username'] = $user["username"];
             $_SESSION['name'] = $user["FName"];
             $_SESSION['accountType'] = $user["accountType"];
-            header("Location: indexMain.php");
+            header("Location: index.php");
         } else {
             $_SESSION['error'] = "Incorrect username or password";
         }

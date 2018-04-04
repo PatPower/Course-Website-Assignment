@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
           $_SESSION['username'] = $uname;
           $_SESSION['name'] = $fname;
           $_SESSION['accountType'] = $acctype;
-          header("Location: indexMain.php");
+          header("Location: index.php");
       }
     }
 }

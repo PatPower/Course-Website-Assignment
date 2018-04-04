@@ -22,7 +22,9 @@
 #barTitle a:hover {
     background: rgba(0,0,0,0);
 }
-
+.center {
+    text-align: center;
+}
 .titleName {
   font-size: 8.0vw;
   font-family: 'Raleway', sans-serif;
@@ -35,7 +37,8 @@
 }
 .loginInfo {
     background: rgba(255,255,255,0.7);
-    height:120px;
+    height:auto;
+    padding-bottom: 5px;
     border-radius: 25px;
     border-color: black;
     border-style: solid;
@@ -475,7 +478,7 @@ p {
   .block h3 {
     padding-top: 3px;
   }
- .Taable {
+ .Table {
    line-height: 1.6;
    font-size: 20px;
    display: flex;
@@ -508,6 +511,8 @@ p {
   }
   .responsive {
     position: fixed;
+    cursor: pointer;
+    background: rgba(0,0,0,0.4);
   }
   .responsive .icon {
     position: absolute;
