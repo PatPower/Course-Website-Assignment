@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $courseWork = $_POST['CWorkAM'];
     $mark = $_POST['AddMarks'];
 
-    $query = "SELECT username, coursework, mark FROM marks WHERE username='$student' and coursework='$courseWork'";
+    $query = "SELECT username, coursework, mark FROM marks WHERE username='$_SESSION['username']' and coursework='$courseWork'";
     $result = mysqli_query($conn, $query);
     if ($result) {
         $rowcount = mysqli_num_rows($result);
@@ -32,12 +32,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $courseWork = $_POST['CWorkUM'];
     $mark = $_POST['UpMarks'];
 
-    $query = "SELECT * FROM marks WHERE username= '$student' and coursework='$courseWork'";
+    $query = "SELECT * FROM marks WHERE username= '$_SESSION['username']' and coursework='$courseWork'";
     $result = mysqli_query($conn, $query);
     if ($result) {
         $rowcount = mysqli_num_rows($result);
         if ($rowcount > 0) {
-          $UpMark1 = "UPDATE marks SET mark=$mark where username = '$student' and coursework='$courseWork'";
+          $UpMark1 = "UPDATE marks SET mark=$mark where username = '$_SESSION['username']' and coursework='$courseWork'";
           $UpMark = mysqli_query($conn, $UpMark1);
           $_SESSION['error1'] = "Mark has been Updated!";
         } else {
@@ -67,6 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $query = "SELECT * FROM marks WHERE username='$student'";
     $result = mysqli_query($conn, $query);
+<<<<<<< HEAD
     if ($result) {
         $rowcount = mysqli_num_rows($result);
         if ($rowcount > 0) {
@@ -86,6 +87,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       else {
         $_SESSION['error3'] = "Student has no marks!";
       }
+=======
+    echo '<div class="table">';
+    echo "<div class="TableHeader">";
+    echo '<span class="Cell">Coursework</span>';
+    echo '<span class="Cell">Mark</span>';
+    echo '</div>';
+    while ($row = $result->fetch_assoc()) {
+      echo '<div class="Row">';
+      echo '<span class="Cell">'.$row['coursework'].'</span>';
+      echo '<span class="Cell">'.$row['mark'].'</span>';
+      echo "</div>";
+>>>>>>> parent of fbad169... Working Instructors Mark Page: Untested
     }
 }
 ?>
@@ -153,9 +166,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $result = mysqli_query($conn, $query);
                     echo "<select>";
                     while ($row = $result->fetch_assoc()) {
-                            echo "<option name='CWorkAM' value=".$row["name"].">".$row["name"]."</option>";
+                            echo "<option name='CWorkAM' value=".$row["name"].">".$row["name"]."</option>"
                         }
-                    echo "</select>";
+                        echo "</select>";
                     ?>
                   </span>
                   <!--enter user mark-->
@@ -194,7 +207,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   $result = mysqli_query($conn, $query);
                   echo "<select>";
                   while ($row = $result->fetch_assoc()) {
-                          echo "<option name='CWorkUM' value=".$row["name"].">".$row["name"]."</option>";
+                          echo "<option name='CWorkUM' value=".$row["name"].">".$row["name"]."</option>"
                       }
                       echo "</select>";
                   ?>
