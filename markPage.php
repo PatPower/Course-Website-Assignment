@@ -67,19 +67,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $query = "SELECT * FROM marks WHERE username='$student'";
     $result = mysqli_query($conn, $query);
-    echo '<div class="table">';
-    echo "<div class='t_header'>";
-    echo '<span class="Cell">Coursework</span>';
-    echo '<span class="Cell">Mark</span>';
-    echo '</div>';
-    while ($row = $result->fetch_assoc()) {
-      echo '<div class="Row">';
-      echo '<span class="Cell">'.$row['coursework'].'</span>';
-      echo '<span class="Cell">'.$row['mark'].'</span>';
-      echo "</div>";
+    if ($result) {
+        $rowcount = mysqli_num_rows($result);
+        if ($rowcount > 0) {
+          echo '<div class="table">';
+          echo "<div class='t_header'>";
+          echo '<span class="Cell">Coursework</span>';
+          echo '<span class="Cell">Mark</span>';
+          echo '</div>';
+          while ($row = $result->fetch_assoc()) {
+            echo '<div class="Row">';
+            echo '<span class="Cell">'.$row['coursework'].'</span>';
+            echo '<span class="Cell">'.$row['mark'].'</span>';
+            echo "</div>";
+          }
+          echo '</div>';
+      }
+      else {
+        $_SESSION['error3'] = "Student has no marks!";
+      }
     }
-    echo '</div>';
-  }
 }
 ?>
 
@@ -236,9 +243,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         }
                         echo "</select>";
                     ?>
-                    <span><input type="submit" Value="Submit" name="SearchStudSub"></span>
+                    <span><form action="" method="post"><input type="submit" Value="Submit" name="SearchStudSub"></form></span>
                   </span>
-
+                  <?php
+                  if (!empty($_SESSION['error3'])) {
+                      echo '<br><div class="error">'.$_SESSION['error3']."<div>";
+                  }
+                  ?>
                 </div>
 
 
