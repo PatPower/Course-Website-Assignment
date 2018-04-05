@@ -88,11 +88,6 @@
     float: right;
 }
 
-.error {
-    color:  #cc0033;
-    font-weight: bold;
-    font-size: 20px;
-}
 
 .responsive a:hover {
   background: rgba(0,0,0,0.3);
