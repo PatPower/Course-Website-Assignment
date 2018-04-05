@@ -65,21 +65,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (isset($_POST['SearchStudSub'])) {
     // submit Search Students form
     $student = $_POST['SearchStud'];
+    $tab = '';
 
     $query = "SELECT * FROM marks WHERE username='$student'";
     $result = mysqli_query($conn, $query);
-    echo '<div class="table">';
-    echo "<div class='t_header'>";
-    echo '<span class="Cell">Coursework</span>';
-    echo '<span class="Cell">Mark</span>';
-    echo '</div>';
+    $tab .= '<div class="table">';
+    $tab .= "<div class='t_header'>";
+    $tab .= '<span class="Cell">Coursework</span>';
+    $tab .= '<span class="Cell">Mark</span>';
+    $tab .= '</div>';
     while ($row = $result->fetch_assoc()) {
-      echo '<div class="Row">';
-      echo '<span class="Cell">'.$row['coursework'].'</span>';
-      echo '<span class="Cell">'.$row['mark'].'</span>';
-      echo "</div>";
+      $tab .= '<div class="Row">';
+      $tab .= '<span class="Cell">'.$row['coursework'].'</span>';
+      $tab .= '<span class="Cell">'.$row['mark'].'</span>';
+      $tab .= "</div>";
     }
-    echo '</div>';
+    $tab .= '</div>';
   }
 }
 ?>
@@ -243,7 +244,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <span><input type="submit" Value="Submit" name="SearchStudSub"></span>
                   </span>
                 </form>
-
+                <?php
+                if (!empty($tab)) {
+                    echo '<br><div class="Qmarks">'.$tab."</div>";
+                }
+                ?>
                 </div>
 
 
