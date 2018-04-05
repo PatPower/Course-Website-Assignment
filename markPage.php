@@ -9,15 +9,76 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (isset($_POST['AddMarkSub'])) {
     // submit add marks form
+    $student = $_POST['studentAM'];
+    $courseWork = $_POST['CWorkAM'];
+    $mark = $_POST['AddMarks'];
+
+    $query = "SELECT username, coursework, mark FROM marks WHERE username='$_SESSION['username']' and coursework='$courseWork'";
+    $result = mysqli_query($conn, $query);
+    if ($result) {
+        $rowcount = mysqli_num_rows($result);
+        if ($rowcount > 0) {
+          $_SESSION['error'] = "There is already a mark here!";
+        } else {
+            $addMark1 = "INSERT INTO marks (username, coursework, mark) VALUES ('$student','$courseWork','$mark')";
+            $addMark = mysqli_query($conn, $addMark1);
+            $_SESSION['error'] = "Mark has been added!";
+        }
+      }
   }
   if (isset($_POST['UpMarkSub'])) {
     // submit Update Marks form
+    $student = $_POST['studentUM'];
+    $courseWork = $_POST['CWorkUM'];
+    $mark = $_POST['UpMarks'];
+
+    $query = "SELECT * FROM marks WHERE username= '$_SESSION['username']' and coursework='$courseWork'";
+    $result = mysqli_query($conn, $query);
+    if ($result) {
+        $rowcount = mysqli_num_rows($result);
+        if ($rowcount > 0) {
+          $UpMark1 = "UPDATE marks SET mark=$mark where username = '$_SESSION['username']' and coursework='$courseWork'";
+          $UpMark = mysqli_query($conn, $UpMark1);
+          $_SESSION['error1'] = "Mark has been Updated!";
+        } else {
+          $_SESSION['error1'] = "No Mark exists!";
+        }
+      }
   }
   if (isset($_POST['AddCSub'])) {
     // submit Add New Course work form
+    $assignment = $_POST['NewAss'];
+
+    $query = "SELECT * FROM coursework WHERE name='$assignment'";
+    $result = mysqli_query($conn, $query);
+    if ($result) {
+        $rowcount = mysqli_num_rows($result);
+        if ($rowcount > 0) {
+          $_SESSION['error2'] = "This Coursework already exists!";
+        } else {
+          $addCW = "INSERT INTO coursework VALUES ('$assignment')";
+          $_SESSION['error2'] = "New coursework has been added!";
+        }
+      }
   }
   if (isset($_POST['SearchStudSub'])) {
     // submit Search Students form
+    $student = $_POST['SearchStud'];
+
+    $query = "SELECT * FROM marks WHERE username='$student'";
+    $result = mysqli_query($conn, $query);
+    echo '<div class="table">';
+    echo "<div class="TableHeader">";
+    echo '<span class="Cell">Coursework</span>';
+    echo '<span class="Cell">Mark</span>';
+    echo '</div>';
+    while ($row = $result->fetch_assoc()) {
+      echo '<div class="Row">';
+      echo '<span class="Cell">'.$row['coursework'].'</span>';
+      echo '<span class="Cell">'.$row['mark'].'</span>';
+      echo "</div>";
+    }
+    echo '</div>';
   }
 }
 ?>
@@ -63,6 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <br>
 
 
+
                 <div class="block"><p>Add Mark</p>
                   <form action="" method="post">
                   <!--student dropdown-->
@@ -80,9 +142,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   <!--course work dropdown-->
                   <span> Course Work:
                     <?php
-                        echo "<select>";
-                        for ($x = 0; $x < 5; $x++) {
-                            echo "<option>".$x."</option>";
+                    $query = "SELECT name FROM coursework";
+                    $result = mysqli_query($conn, $query);
+                    echo "<select>";
+                    while ($row = $result->fetch_assoc()) {
+                            echo "<option name='CWorkAM' value=".$row["name"].">".$row["name"]."</option>"
                         }
                         echo "</select>";
                     ?>
@@ -90,43 +154,74 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   <!--enter user mark-->
                   <span>Mark:<input type="number" name="AddMarks" min="0" max="100" placeholder="PERCENTAGE MARK"></span>
                   <span><input type="submit" Value="Submit" name ='AddMarkSub'></span>
+                  <?php
+                  if (!empty($_SESSION['error'])) {
+                      echo '<br><div class="error">'.$_SESSION['error']."<div>";
+                  }
+                  ?>
+                </form>
+
+                </div>
+
+
+
+
+                <div class="block"><p>Update Mark</p>
+                  <form action="" method="post">
+                  <!--student dropdown-->
+                  <span> Student:
+                  <?php
+                      $query = "SELECT username FROM login WHERE accountType='student'";
+                      $result = mysqli_query($conn, $query);
+                      echo "<select>";
+                      while ($row = $result->fetch_assoc()) {
+                          echo "<option name='studentUM' value=".$row["username"].">".$row["username"]."</option>";
+                      }
+                      echo "</select>";
+                  ?>
+                </span>
+                <!--course work dropdown-->
+                <span> Course Work:
+                  <?php
+                  $query = "SELECT name FROM coursework";
+                  $result = mysqli_query($conn, $query);
+                  echo "<select>";
+                  while ($row = $result->fetch_assoc()) {
+                          echo "<option name='CWorkUM' value=".$row["name"].">".$row["name"]."</option>"
+                      }
+                      echo "</select>";
+                  ?>
+                </span>
+                    <!--enter user mark-->
+                    <span>Mark:<input type="number" name="UpMarks" min="0" max="100" placeholder="PERCENTAGE MARK"></span>
+                    <span><input type="submit" Value="Submit" name="UpMarkSub"></span>
+
+                    <?php
+                    if (!empty($_SESSION['error1'])) {
+                        echo '<br><div class="error">'.$_SESSION['error1']."<div>";
+                    }
+                    ?>
+                  </form>
+                </div>
+
+
+
+
+
+                <div class="block"><p>Add Course Work</p>
+                  <form action="" method="post">
+                  <span>Assignment Name:<input type="text" name="NewAss"></span>
+                  <span><input type="submit" Value="Submit" name="AddCSub"></span>
+                  <?php
+                  if (!empty($_SESSION['error2'])) {
+                      echo '<br><div class="error">'.$_SESSION['error2']."<div>";
+                  }
+                  ?>
                 </form>
                 </div>
 
 
-                <div class="block"><p>Update Mark</p>
-                  <!--student dropdown-->
-                  <span>Student:
-                    <?php
-                        $query = "SELECT username FROM login WHERE accountType='student'";
-                        $result = mysqli_query($conn, $query);
-                        echo "<select>";
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<option>".$row["username"]."</option>";
-                        }
-                        echo "</select>";
-                    ?>
-                  </span>
-                    <!--course work dropdown-->
-                    <span> Course Work:
-                      <?php
-                          echo "<select>";
-                          for ($x = 0; $x < 5; $x++) {
-                              echo "<option>".$x."</option>";
-                          }
-                          echo "</select>";
-                      ?>
-                    </span>
-                    <!--enter user mark-->
-                    <span>Mark:<input type="number" name="UpMarks" min="0" max="100" placeholder="PERCENTAGE MARK"></span>
-                    <span><input type="submit" Value="Submit" name="UpMarkSub"></span>
-                </div>
 
-
-                <div class="block"><p>Add Course Work</p>
-                  <span>Assignment Name:<input type="text" name="NewAss"></span>
-                  <span><input type="submit" Value="Submit" name="AddCSub"></span>
-                </div>
 
 
                 <div class="block"><p>Search for Students Work</p>
@@ -137,7 +232,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $result = mysqli_query($conn, $query);
                         echo "<select>";
                         while ($row = $result->fetch_assoc()) {
-                            echo "<option name='student' value=".$row["username"].">".$row["username"]."</option>";
+                            echo "<option name='SearchStud' value=".$row["username"].">".$row["username"]."</option>";
                         }
                         echo "</select>";
                     ?>
