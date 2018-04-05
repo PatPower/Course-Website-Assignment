@@ -51,9 +51,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         </div>
 
         <div class='AccType'>
-          <span>Student<input type="radio" name="AccType" value="Student"></span>
+          <span>Student<input type="radio" name="AccType" value="student"></span>
           <span>TA<input type="radio" name="AccType" value="TA"></span>
-          <span>Instructor<input type="radio" name="AccType" value="Instructor"></span>
+          <span>Instructor<input type="radio" name="AccType" value="instructor"></span>
         </br>
         </div>
 

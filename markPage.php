@@ -7,27 +7,18 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $fname = $_POST["NewUFname"];
-    $lname = $_POST["NewULname"];
-    $acctype = $_POST["AccType"];
-    $uname = $_POST["NewUserN"];
-    $pass = $_POST["NewUPass"];
-
-    $query = "SELECT username FROM login WHERE  username = '$uname'";
-    $result = mysqli_query($conn, $query);
-    if ($result) {
-        $rowcount = mysqli_num_rows($result);
-        if ($rowcount > 0) {
-            $_SESSION['error'] = "Username already in use!";
-        } else {
-            $addUser1 = "INSERT INTO login (FName, LName, username, password, accountType) VALUES ('$fname','$lname','$uname', '$pass','$acctype')";
-            $addNewUser = mysqli_query($conn, $addUser1);
-            $_SESSION['username'] = $uname;
-            $_SESSION['name'] = $fname;
-            $_SESSION['accountType'] = $acctype;
-            header("Location: indexMain.php");
-        }
-    }
+  if (isset($_POST['AddMarkSub'])) {
+    // submit add marks form
+  }
+  if (isset($_POST['UpMarkSub'])) {
+    // submit Update Marks form
+  }
+  if (isset($_POST['AddCSub'])) {
+    // submit Add New Course work form
+  }
+  if (isset($_POST['SearchStudSub'])) {
+    // submit Search Students form
+  }
 }
 ?>
 
@@ -45,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div id="navBar" class="nav">
             <a id="barTitle" href="index.php">CSCB20 Course Website</a>
             <a id="empty" href="index.php"></a>
+            <a href="logout.php" name='logout' value='out'>Logout</a>
             <a href="index.php#contact">Contact</a>
             <a href="index.php#labs">Labs</a>
             <a href="index.php#assignments">Assignments</a>
@@ -72,6 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
                 <div class="block"><p>Add Mark</p>
+                  <form action="" method="post">
                   <!--student dropdown-->
                     <span> Student:
                     <?php
@@ -79,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $result = mysqli_query($conn, $query);
                         echo "<select>";
                         while ($row = $result->fetch_assoc()) {
-                            echo "<option name='student' value=".$row["username"].">".$row["username"]."</option>";
+                            echo "<option name='studentAM' value=".$row["username"].">".$row["username"]."</option>";
                         }
                         echo "</select>";
                     ?>
@@ -96,6 +89,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   </span>
                   <!--enter user mark-->
                   <span>Mark:<input type="number" name="AddMarks" min="0" max="100" placeholder="PERCENTAGE MARK"></span>
+                  <span><input type="submit" Value="Submit" name ='AddMarkSub'></span>
+                </form>
                 </div>
 
 
@@ -123,13 +118,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                       ?>
                     </span>
                     <!--enter user mark-->
-                    <span>Mark:<input type="number" name="AddMarks" min="0" max="100" placeholder="PERCENTAGE MARK"></span>
+                    <span>Mark:<input type="number" name="UpMarks" min="0" max="100" placeholder="PERCENTAGE MARK"></span>
+                    <span><input type="submit" Value="Submit" name="UpMarkSub"></span>
                 </div>
 
 
                 <div class="block"><p>Add Course Work</p>
                   <span>Assignment Name:<input type="text" name="NewAss"></span>
-                  <span><input type="submit" Value="Submit"></span>
+                  <span><input type="submit" Value="Submit" name="AddCSub"></span>
                 </div>
 
 
@@ -145,7 +141,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         }
                         echo "</select>";
                     ?>
-                    <span><input type="submit" Value="Submit"></span>
+                    <span><input type="submit" Value="Submit" name="SearchStudSub"></span>
                   </span>
 
                 </div>
