@@ -7,14 +7,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // submit add marks form
         $comment = $_POST["comment"];
         $name = $_POST['remarkOption'];
-        $query = "SELECT courseWork FROM remarkrequests WHERE username='" . $_SESSION['username'] . "' and coursework='$name'";
+        $query = "SELECT courseWork FROM remarkRequests WHERE username='" . $_SESSION['username'] . "' and coursework='$name'";
         $result = mysqli_query($conn, $query);
         if ($result) {
             $rowcount = mysqli_num_rows($result);
             if ($rowcount > 0) {
                 $_SESSION['error'] = "There is already a remark requested for " . $name . "!";
             } else {
-                $addremark1 = "INSERT INTO remarkrequests VALUES ('" . $_SESSION['username'] . "','$name','$comment',0)";
+                $addremark1 = "INSERT INTO remarkRequests VALUES ('" . $_SESSION['username'] . "','$name','$comment',0)";
                 $addremark = mysqli_query($conn, $addremark1);
                 $_SESSION['error'] = "Remark has been added!";
             }

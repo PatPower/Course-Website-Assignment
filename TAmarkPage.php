@@ -82,6 +82,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     $tab .= '</div>';
   }
+  if (isset($_POST['reqSub'])) {
+    $orderId = $_POST['requestId'];
+    $query = "DELETE FROM remarkRequests WHERE requestNum ='$orderId'";
+    $result = mysqli_query($conn, $query);
+  }
 }
 ?>
 
@@ -256,12 +261,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   $tab .= '<span class="Cell">Username</span>';
                   $tab .= '<span class="Cell">Coursework</span>';
                   $tab .= '<span class="Cell">Explaination</span>';
+                  $tab .= '<span class="Cell">Request Number</span>';
                   $tab .= '</div>';
                   while ($row = $result->fetch_assoc()) {
                     $tab .= '<div class="Row">';
                     $tab .= '<span class="Cell">'.$row['username'].'</span>';
                     $tab .= '<span class="Cell">'.$row['coursework'].'</span>';
                     $tab .= '<span class="Cell">'.$row['remarkExplain'].'</span>';
+                    $tab .= '<span class="Cell">' . $row['requestNum'] . '</span>';
                     $tab .= "</div>";
                   }
                   $tab .= '</div>';
@@ -269,6 +276,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   echo '<br>';
                   ?>
                 </div>
+                <div class="center">
+                <form action="" method="post">
+                <span> Request Number:
+                    <?php
+                    $query = "SELECT requestNum FROM remarkRequests";
+                    $result = mysqli_query($conn, $query);
+                    echo "<select name='requestId'>";
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<option value=" . $row["requestNum"] . ">" . $row["requestNum"] . "</option>";
+                    }
+                    echo "</select>";
+                    ?>
+                </span>
+                <span><input type="submit" Value="Submit" name="reqSub"></span>
+              </form>
+            </div>
                 </div>
 
 
