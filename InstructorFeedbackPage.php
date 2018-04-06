@@ -6,24 +6,29 @@ session_start();
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
-  $InUName = $_POST['SEL_instructor']
-  $an1 = $_POST['Question1'];
-  $an2 = $_POST['Question2'];
-  $an3 = $_POST['Question3'];
-  $an4 = $_POST['Question4'];
 
-  if ((isset($an1)) and (isset($an2)) and (isset($an3)) and (isset($an4)) and (isset($InUName))) {
-      $addFeed1 = "INSRT INTO Annon_feed VALUES ('$uName','$an1','$an2','$an3','$an4','$InUName')";
-      $addFeed = mysqli_query($conn, $addFeed1);
-      $_SESSION['error'] = "Submission Successful!";
-      }
-  }
-  else {
-    $_SESSION['error'] = "Not all questions are answered!"
-  }
+$query = "SELECT * FROM Annon_feed";
+$result = mysqli_query($conn, $query);
+$tab .= '<div class="table">';
+$tab .= "<div class='t_header'>";
+$tab .= '<span class="Cell">Instructor</span>';
+$tab .= '<span class="Cell">What do you like about the instructor teaching?</span>';
+$tab .= '<span class="Cell">What do you recommend the instructor to do to improve their teaching?</span>';
+$tab .= '<span class="Cell">What do you like about the labs?</span>';
+$tab .= '<span class="Cell">What do you recommend the lab instructors to do to improve their lab teaching?</span>';
+$tab .= '</div>';
+while ($row = $result->fetch_assoc()) {
+  $tab .= '<div class="Row">';
+  $tab .= '<span class="Cell">'.$row['instructor'].'</span>';
+  $tab .= '<span class="Cell">'.$row['q1'].'</span>';
+  $tab .= '<span class="Cell">'.$row['q2'].'</span>';
+  $tab .= '<span class="Cell">'.$row['q3'].'</span>';
+  $tab .= '<span class="Cell">'.$row['q4'].'</span>';
+  $tab .= "</div>";
 }
+$tab .= '</div>';
 ?>
+
 
 <html>
     <head>
@@ -64,47 +69,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 <br>
 
 
-                <form action="" method="post" class="center">
-                  <div> Instructor:
-                  <?php
-                      $query = "SELECT username, FName, LName FROM login WHERE accountType='instructor'";
-                      $result = mysqli_query($conn, $query);
-                      echo "<select name='SEL_instructor'>";
-                      while ($row = $result->fetch_assoc()) {
-                          echo "<option value=".$row["username"].">".$row["FName"].' '.$row["LName"]."</option>";
-                      }
-                      echo "</select>";
-                  ?>
-                </div>
-                <div class="block"><p>What do you like about the instructor teaching?</p>
+                <div class="block"><p>Student Feedback</p>
                   <br>
-                  <div><input type="text" name="Question1"></div>
+                  <div class="center"><?php echo $tab; ?></div>
                 </div>
-
-                <div class="block"><p>What do you recommend the instructor to do to improve their teaching?</p>
-                  <br>
-                  <div><input type="text" name="Question2"></div>
-                </div>
-
-                <div class="block"><p>What do you like about the labs?</p>
-                  <br>
-                  <div><input type="text" name="Question3"></div>
-                </div>
-
-                <div class="block"><p>What do you recommend the lab instructors to do to improve their lab teaching?</p>
-                  <br>
-                  <div><input type="text" name="Question3"></div>
-                </div>
-
-                <input type="submit" value="Submit">
-                <?php
-                if (!empty($_SESSION['error'])) {
-                    echo '<br><div class="error">'.$_SESSION['error']."<div>";
-                }
-                ?>
-                </form>
-
-
 
 
             </div>

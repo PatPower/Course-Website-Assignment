@@ -4,6 +4,16 @@
     if (empty($_SESSION['username'])) {
       header("Location: login.php");
     }
+
+    if ($_SESSION['accountType'] == 'instructor') {
+      $AFeed = "<a href= 'instructorFeedbackPage.php'>";
+    }
+    if ($_SESSION['accountType'] == 'student') {
+      $AFeed = "<a href= 'StudentFeedback.php'>";
+    }
+    else {
+      $AFeed = "<a href=''>"
+    }
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -50,7 +60,8 @@
               echo "<a href="TAmarkPage.php"><p>Click here for mark info<p></a>";
             }
             else {
-              echo "<a href="markPageStudent.php"><p>Click here for mark info<p></a>";
+              /*file name = markPageStudent.php */
+              echo "<a href=""><p>Click here for mark info<p></a>";
             }
         ?>
         <a href="markPage.php"><p>Click here for mark info<p></a>
@@ -166,7 +177,7 @@
       <div class="divider">
         <hr>
       </div>
-      <div id="resource"><a href="https://docs.google.com/forms/d/e/1FAIpQLSc0_2lybZw9Zwlm3fKtkMDegHrP0dSbH_LUAMaMnx5vhko6Yg/viewform">Anonymous Feedback</a></div>
+      <div id="resource"><?php echo $AFeed;?>Anonymous Feedback</a></div>
       <p> Please help improve our website by giving us anonymous feedback. </p>
       <div class="divider">
         <hr>
