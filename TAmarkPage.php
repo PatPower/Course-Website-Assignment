@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <link rel="stylesheet" type="text/css" href="markPage.css">
         <script type="text/javascript" src="index.js" ></script>
         <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
-        <title>Marks</title>
+        <title>TA Marks</title>
     </head>
 
     <body>
