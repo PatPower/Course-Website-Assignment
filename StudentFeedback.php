@@ -1,8 +1,5 @@
 <?php
-<<<<<<< HEAD
 unset($_SESSION['error']);
-=======
->>>>>>> Pat
 include("config.php");
 session_start();
 
@@ -10,24 +7,6 @@ session_start();
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 
-<<<<<<< HEAD
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
-  $InUName = $_POST['SEL_instructor'];
-  $an1 = $_POST['Question1'];
-  $an2 = $_POST['Question2'];
-  $an3 = $_POST['Question3'];
-  $an4 = $_POST['Question4'];
-
-  if ((isset($an1)) and (isset($an2)) and (isset($an3)) and (isset($an4))) {
-      $addFeed1 = "INSRT INTO Annon_feed VALUES ('$uName','$an1','$an2','$an3','$an4','$InUName')";
-      $addFeed = mysqli_query($conn, $addFeed1);
-      $_SESSION['error'] = "Submission Successful!";
-      }
-  }
-  else {
-    $_SESSION['error'] = "Not all questions are answered!";
-  }
-=======
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $InUName = $_POST['SEL_instructor'];
         $an1 = $_POST['Question1'];
@@ -43,7 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     } else {
         $_SESSION['error'] = "Not all questions are answered!";
     }
->>>>>>> Pat
 }
 ?>
 
@@ -52,11 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         <link rel="stylesheet" type="text/css" href="markPage.css">
         <script type="text/javascript" src="index.js" ></script>
         <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
-<<<<<<< HEAD
-        <title>Marks</title>
-=======
         <title>Anonymous Feedback</title>
->>>>>>> Pat
     </head>
 
     <body>
@@ -91,46 +65,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
                 <form action="" method="post" class="center">
-<<<<<<< HEAD
-                  <div> Instructor:
-                  <?php
-                      $query = "SELECT username, FName, LName FROM login WHERE accountType='instructor'";
-                      $result = mysqli_query($conn, $query);
-                      echo "<select name='SEL_instructor'>";
-                      while ($row = $result->fetch_assoc()) {
-                          echo "<option value=".$row["username"].">".$row["FName"].' '.$row["LName"]."</option>";
-                      }
-                      echo "</select>";
-                  ?>
-                </div>
-                <div class="block"><p>What do you like about the instructor teaching?</p>
-                  <br>
-                  <div><input type="text" name="Question1"></div>
-                </div>
-
-                <div class="block"><p>What do you recommend the instructor to do to improve their teaching?</p>
-                  <br>
-                  <div><input type="text" name="Question2"></div>
-                </div>
-
-                <div class="block"><p>What do you like about the labs?</p>
-                  <br>
-                  <div><input type="text" name="Question3"></div>
-                </div>
-
-                <div class="block"><p>What do you recommend the lab instructors to do to improve their lab teaching?</p>
-                  <br>
-                  <div><input type="text" name="Question3"></div>
-                </div>
-
-                <br>
-                <input type="submit" value="Submit">
-                <?php
-                if (!empty($_SESSION['error'])) {
-                    echo '<br><div class="error">'.$_SESSION['error']."<div>";
-                }
-                ?>
-=======
                     <div> Instructor:
                         <?php
                         $query = "SELECT username, FName, LName FROM login WHERE accountType='instructor'";
@@ -169,55 +103,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                         echo '<br><div class="error">' . $_SESSION['error'] . "<div>";
                     }
                     ?>
->>>>>>> Pat
                 </form>
 
 
 
 
             </div>
-<<<<<<< HEAD
-            <footer>
-                <div class="left">
-                    <br>
-                    <br>
-                    <h2>CSCB20</h2>
-                    <h2>Course Website</h2>
-                </div>
-                <div class="vline"></div>
-                <div class="vline"></div>
-                <div class="middle">
-                    <p> Navigation</p>
-                    <a onclick="smoothScroll('course')">Course Info</a><br>
-                    <a onclick="smoothScroll('anouncments')">Anouncments</a><br>
-                    <a onclick="smoothScroll('links')">Course Resources</a><br>
-                    <a onclick="smoothScroll('lecs')">Lectures</a><br>
-                    <a onclick="smoothScroll('assignments')">Assignments</a><br>
-                    <a onclick="smoothScroll('labs')">Labs</a><br>
-                    <a onclick="smoothScroll('contact')">Contact</a><br>
-                </div>
-                <div class="middle">
-                    <p class="bold"> Course Resources</p class="bold">
-                    <a href="#Syllabus">Syllabus</a><br>
-                    <a href='https://code.tutsplus.com/articles/sql-for-beginners--net-8200'>MySQL Tutorial (Online)</a><br>
-                    <a href='https://www.piazza.com'>Piazza</a><br>
-                    <a href='https://markus.utsc.utoronto.ca/cscb20w18/?locale=en'>Markus</a><br>
-                    <a href='http://www.utsc.utoronto.ca/iits/computer-labs'>UTSC Labs</a><br>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSc0_2lybZw9Zwlm3fKtkMDegHrP0dSbH_LUAMaMnx5vhko6Yg/viewform">Anonymous Feedback</a><br>
-                    <a href="http://www.utsc.utoronto.ca/cms/faculty-of-computer-science">UTSC Computer Science Faculty</a><br>
-                </div>
-                <br>
-                <div class="vline"></div>
-                <div class="vline"></div>
-                <div class="right">
-                    <p> Created by </p>
-                    <h2> Patent </h2>
-                    <h2> & </h2>
-                    <h2> Dwight </h2>
-                </div>
-            </footer>
-        </div>
-=======
         </div>
         <footer>
             <div class="left">
@@ -258,6 +149,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 <h2> Dwight </h2>
             </div>
         </footer>
->>>>>>> Pat
     </body>
 </html>
