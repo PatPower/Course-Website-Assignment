@@ -54,11 +54,7 @@
             }
         ?>
         <a href="markPage.php"><p>Click here for mark info<p></a>
-<<<<<<< HEAD
-  
-=======
 
->>>>>>> Dwight
     </div>
   </div>
   <div class='innerSecondBlock'>

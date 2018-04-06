@@ -7,19 +7,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-<<<<<<< HEAD
-  if (isset($_POST['AddMarkSub'])) {
-    // submit add marks form
-  }
-  if (isset($_POST['UpMarkSub'])) {
-    // submit Update Marks form
-  }
-  if (isset($_POST['AddCSub'])) {
-    // submit Add New Course work form
-  }
-  if (isset($_POST['SearchStudSub'])) {
-    // submit Search Students form
-=======
   if ((isset($_POST['AddMarkSub'])) and (isset($_POST['studentAM'])) and isset($_POST['CWorkAM'])) {
     // submit add marks form
     $student = $_POST['studentAM'];
@@ -94,16 +81,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $tab .= "</div>";
     }
     $tab .= '</div>';
->>>>>>> Dwight
   }
 }
 ?>
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> Dwight
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="markPage.css">
@@ -143,15 +125,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <br>
 
 
-<<<<<<< HEAD
-                <div class="block"><p>Add Mark</p>
-                  <form action="" method="post">
-=======
 
                 <div class="block"><p>Add Mark</p>
                   <br>
                   <form action="" method="post" class="center">
->>>>>>> Dwight
                   <!--student dropdown-->
                     <span> Student:
                     <?php
@@ -159,11 +136,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $result = mysqli_query($conn, $query);
                         echo "<select name='studentAM'>";
                         while ($row = $result->fetch_assoc()) {
-<<<<<<< HEAD
-                            echo "<option name='studentAM' value=".$row["username"].">".$row["username"]."</option>";
-=======
                             echo "<option value=".$row["username"].">".$row["username"]."</option>";
->>>>>>> Dwight
                         }
                         echo "</select>";
                     ?>
@@ -183,15 +156,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   <!--enter user mark-->
                   <span>Mark:<input type="number" name="AddMarks" min="0" max="100" placeholder="PERCENTAGE MARK"></span>
                   <span><input type="submit" Value="Submit" name ='AddMarkSub'></span>
-<<<<<<< HEAD
-                </form>
-                </div>
-
-
-                <div class="block"><p>Update Mark</p>
-                  <!--student dropdown-->
-                  <span>Student:
-=======
                   <script>
                   var Mess = <?php
                   if (!empty($_SESSION['error'])) {
@@ -271,7 +235,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   <!--student dropdown-->
                   <form action="" method="post" class="center">
                     <span> Student
->>>>>>> Dwight
                     <?php
                         $query = "SELECT username FROM login WHERE accountType='student'";
                         $result = mysqli_query($conn, $query);
@@ -281,47 +244,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         }
                         echo "</select>";
                     ?>
-<<<<<<< HEAD
-                  </span>
-                    <!--course work dropdown-->
-                    <span> Course Work:
-                      <?php
-                          echo "<select>";
-                          for ($x = 0; $x < 5; $x++) {
-                              echo "<option>".$x."</option>";
-                          }
-                          echo "</select>";
-                      ?>
-                    </span>
-                    <!--enter user mark-->
-                    <span>Mark:<input type="number" name="UpMarks" min="0" max="100" placeholder="PERCENTAGE MARK"></span>
-                    <span><input type="submit" Value="Submit" name="UpMarkSub"></span>
-                </div>
-
-
-                <div class="block"><p>Add Course Work</p>
-                  <span>Assignment Name:<input type="text" name="NewAss"></span>
-                  <span><input type="submit" Value="Submit" name="AddCSub"></span>
-                </div>
-
-
-                <div class="block"><p>Search for Students Work</p>
-                  <!--student dropdown-->
-                    <span> Student
-                    <?php
-                        $query = "SELECT username FROM login WHERE accountType='student'";
-                        $result = mysqli_query($conn, $query);
-                        echo "<select>";
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<option name='student' value=".$row["username"].">".$row["username"]."</option>";
-                        }
-                        echo "</select>";
-                    ?>
-                    <span><input type="submit" Value="Submit" name="SearchStudSub"></span>
-                  </span>
-
-                </div>
-=======
                     <span><input type="submit" Value="Submit" name="SearchStudSub"></span>
                   </span>
                 </form>
@@ -361,7 +283,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   ?>
                 </div>
                 </div>
->>>>>>> Dwight
 
 
             </div>
