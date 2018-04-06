@@ -26,13 +26,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="markPage.css">
+        <link rel="stylesheet" type="text/css" href="markPageStudent.css">
         <script type="text/javascript" src="index.js" ></script>
         <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+        <script type="text/javascript" src="markPageStudent.js" ></script>
         <title>Marks</title>
     </head>
 
     <body>
+        <div class="inputBackground" id="back">
+            <div class="modal-content">
+                <span class="close" onclick='closePop()'>&times;</span>
+                <div class="pageTitleRemark">Remark Request</div>
+            </div>
+        </div>
         <div id="navBar" class="nav">
             <a id="barTitle" href="index.php">CSCB20 Course Website</a>
             <a id="empty" href="index.php"></a>
@@ -48,9 +55,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="navFunct()">&#9776;</a>
         </div>
 
-
-
-
         <div class="page">
             <div class="pageTitle">Marks</div>
             <br>
@@ -61,90 +65,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo '<br>Account Type: ' . $_SESSION['accountType'] . '</div>';
                 ?>
                 <br>
-
-
-                <div class="block"><p>Add Mark</p>
-                  <form action="" method="post">
-                  <!--student dropdown-->
-                    <span> Student:
+                <div class="block"><p>Your Marks</p>
                     <?php
-                        $query = "SELECT username FROM login WHERE accountType='student'";
+                        $query = "SELECT name FROM coursework";
                         $result = mysqli_query($conn, $query);
-                        echo "<select>";
                         while ($row = $result->fetch_assoc()) {
-                            echo "<option name='studentAM' value=".$row["username"].">".$row["username"]."</option>";
+                            $query = "SELECT mark FROM marks WHERE username='".$_SESSION['username']."' and courseWork='".$row['name']."'";
+                            $result2 = mysqli_query($conn, $query);
+                            $row2 = $result2->fetch_assoc();
+                            echo "<div class='center'>".$row["name"]." | ".$row2["mark"]."   ";
+                            echo "<button onClick='popup()' type='button'> Click here for remark </button></div><br>";
+                            
                         }
-                        echo "</select>";
+                        
                     ?>
-                  </span>
-                  <!--course work dropdown-->
-                  <span> Course Work:
-                    <?php
-                        echo "<select>";
-                        for ($x = 0; $x < 5; $x++) {
-                            echo "<option>".$x."</option>";
-                        }
-                        echo "</select>";
-                    ?>
-                  </span>
-                  <!--enter user mark-->
-                  <span>Mark:<input type="number" name="AddMarks" min="0" max="100" placeholder="PERCENTAGE MARK"></span>
-                  <span><input type="submit" Value="Submit" name ='AddMarkSub'></span>
-                </form>
                 </div>
 
-
-                <div class="block"><p>Update Mark</p>
-                  <!--student dropdown-->
-                  <span>Student:
-                    <?php
-                        $query = "SELECT username FROM login WHERE accountType='student'";
-                        $result = mysqli_query($conn, $query);
-                        echo "<select>";
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<option>".$row["username"]."</option>";
-                        }
-                        echo "</select>";
-                    ?>
-                  </span>
-                    <!--course work dropdown-->
-                    <span> Course Work:
-                      <?php
-                          echo "<select>";
-                          for ($x = 0; $x < 5; $x++) {
-                              echo "<option>".$x."</option>";
-                          }
-                          echo "</select>";
-                      ?>
-                    </span>
-                    <!--enter user mark-->
-                    <span>Mark:<input type="number" name="UpMarks" min="0" max="100" placeholder="PERCENTAGE MARK"></span>
-                    <span><input type="submit" Value="Submit" name="UpMarkSub"></span>
-                </div>
-
-
-                <div class="block"><p>Add Course Work</p>
-                  <span>Assignment Name:<input type="text" name="NewAss"></span>
-                  <span><input type="submit" Value="Submit" name="AddCSub"></span>
-                </div>
-
-
-                <div class="block"><p>Search for Students Work</p>
-                  <!--student dropdown-->
-                    <span> Student
-                    <?php
-                        $query = "SELECT username FROM login WHERE accountType='student'";
-                        $result = mysqli_query($conn, $query);
-                        echo "<select>";
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<option name='student' value=".$row["username"].">".$row["username"]."</option>";
-                        }
-                        echo "</select>";
-                    ?>
-                    <span><input type="submit" Value="Submit" name="SearchStudSub"></span>
-                  </span>
-
-                </div>
+ 
 
 
             </div>

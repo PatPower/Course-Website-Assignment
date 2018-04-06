@@ -1,5 +1,9 @@
 <?php
     session_start();
+
+    if (empty($_SESSION['username'])) {
+      header("Location: login.php");
+    }
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -18,6 +22,7 @@
     <div id="navBar" class="nav">
       <a id="barTitle" href="index.html">CSCB20 Course Website</a>
       <a id="empty" href="index.html"></a>
+      <a href="logout.php" name='logout' value='out'>Logout</a>
       <a onclick="smoothScroll('contact')">Contact</a>
       <a onclick="smoothScroll('labs')">Labs</a>
       <a onclick="smoothScroll('assignments')">Assignments</a>
@@ -38,7 +43,8 @@
             echo '<br><p>User Name: '.$_SESSION['username'].'</p>';
             echo '<p>Account Type: '.$_SESSION['accountType'].'</p>';
         ?>
-        <a href="markPage.php"> <br><p>Click here for mark info<p></a>
+        <a href="markPage.php"><p>Click here for mark info<p></a>
+  
     </div>
   </div>
   <div class='innerSecondBlock'>
