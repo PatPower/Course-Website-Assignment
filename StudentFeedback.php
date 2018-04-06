@@ -2,10 +2,6 @@
 include("config.php");
 session_start();
 unset($_SESSION['error']);
-<<<<<<< HEAD
-
-=======
->>>>>>> 2c6ed1e8f12c1165ae085ac82c359512124ce006
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -18,7 +14,7 @@ if ($conn->connect_error) {
         $an4 = $_POST['Question4'];
 
         if ((isset($an1)) and ( isset($an2)) and ( isset($an3)) and ( isset($an4)) and ( isset($InUName))) {
-            $addFeed1 = "INSRT INTO Annon_feed VALUES ('$uName','$an1','$an2','$an3','$an4','$InUName')";
+            $addFeed1 = "INSERT INTO Annon_feed VALUES ('$uName','$an1','$an2','$an3','$an4','$InUName')";
             $addFeed = mysqli_query($conn, $addFeed1);
             $_SESSION['error'] = "Submission Successful!";
         }

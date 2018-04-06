@@ -1,6 +1,6 @@
 <?php
     session_start();
-
+    unset($_SESSION['error']);
     if (empty($_SESSION['username'])) {
       header("Location: login.php");
     }
