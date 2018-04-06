@@ -42,9 +42,23 @@
             echo '<br><p>Welcome '.$_SESSION['name'].'!</p>';
             echo '<br><p>User Name: '.$_SESSION['username'].'</p>';
             echo '<p>Account Type: '.$_SESSION['accountType'].'</p>';
+
+            if $_SESSION['accountType'] == 'instructor' {
+              echo "<a href="markPage.php"><p>Click here for mark info<p></a>";
+            }
+            if $_SESSION['accountType'] == 'TA' {
+              echo "<a href="TAmarkPage.php"><p>Click here for mark info<p></a>";
+            }
+            else {
+              echo "<a href="markPageStudent.php"><p>Click here for mark info<p></a>";
+            }
         ?>
         <a href="markPage.php"><p>Click here for mark info<p></a>
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> Dwight
     </div>
   </div>
   <div class='innerSecondBlock'>

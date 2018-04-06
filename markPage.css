@@ -9,6 +9,11 @@
 .center {
     text-align: center;
 }
+
+.center div {
+  margin: auto;
+}
+
 .centerInfo {
     margin-left: 20px;
     background: rgba(0,0,0,0.1);
@@ -18,7 +23,11 @@
 .block {
   width: 95%;
   min-height: 150px;
+<<<<<<< HEAD
   height:auto;
+=======
+  height: auto;
+>>>>>>> Dwight
   border-radius: 25px;
   background: rgba(255,255,255,0.7);
   margin: 10px;
@@ -32,6 +41,7 @@
     color: black;
 }
 
+
 .page {
     display: flex;
     flex-direction: column;
@@ -43,7 +53,7 @@
     border-radius: 35px;
     width: 95%;
     background-color: lightskyblue;
-    margin-bottom: 30px;    
+    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -88,6 +98,22 @@
     text-decoration: none;
     float: right;
 }
+
+.table {
+  display: table;
+ }
+
+.Cell {
+  border: 1px solid black;
+  display: table-cell;
+  padding: 10px;
+  text-align: center;
+}
+
+.Row, .t_header {
+  display: table-row;
+}
+
 
 .responsive a:hover {
   background: rgba(0,0,0,0.3);
