@@ -257,6 +257,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               </div>
                 </div>
 
+                <div class="block"><p>Remark Requests</p>
+                  <div class="center">
+                  <?php
+                  $tab = '';
+                  $query = "SELECT * FROM remarkRequests";
+                  $result = mysqli_query($conn, $query);
+                  echo '<br>';
+                  $tab .= '<div class="table">';
+                  $tab .= "<div class='t_header'>";
+                  $tab .= '<span class="Cell">Username</span>';
+                  $tab .= '<span class="Cell">Coursework</span>';
+                  $tab .= '<span class="Cell">Explaination</span>';
+                  $tab .= '</div>';
+                  while ($row = $result->fetch_assoc()) {
+                    $tab .= '<div class="Row">';
+                    $tab .= '<span class="Cell">'.$row['username'].'</span>';
+                    $tab .= '<span class="Cell">'.$row['coursework'].'</span>';
+                    $tab .= '<span class="Cell">'.$row['remarkExplain'].'</span>';
+                    $tab .= "</div>";
+                  }
+                  $tab .= '</div>';
+                  echo $tab;
+                  echo '<br>';
+                  ?>
+                </div>
+                </div>
+
 
             </div>
             <footer>
