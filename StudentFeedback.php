@@ -7,7 +7,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
-  $InUName = $_POST['SEL_instructor']
+  $InUName = $_POST['SEL_instructor'];
   $an1 = $_POST['Question1'];
   $an2 = $_POST['Question2'];
   $an3 = $_POST['Question3'];
@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
       }
   }
   else {
-    $_SESSION['error'] = "Not all questions are answered!"
+    $_SESSION['error'] = "Not all questions are answered!";
   }
 }
 ?>
@@ -95,7 +95,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                   <br>
                   <div><input type="text" name="Question3"></div>
                 </div>
-
+                
+                <br>
                 <input type="submit" value="Submit">
                 <?php
                 if (!empty($_SESSION['error'])) {
