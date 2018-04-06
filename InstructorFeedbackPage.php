@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 unset($_SESSION['error']);
 include("config.php");
 session_start();
@@ -29,37 +28,6 @@ while ($row = $result->fetch_assoc()) {
   $tab .= "</div>";
 }
 $tab .= '</div>';
-=======
-include("config.php");
-session_start();
-unset($_SESSION['error']);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-    $query = "SELECT * FROM Annon_feed";
-    $result = mysqli_query($conn, $query);
-    $tab .= '<div class="table">';
-    $tab .= "<div class='t_header'>";
-    $tab .= '<span class="Cell">Instructor</span>';
-    $tab .= '<span class="Cell">What do you like about the instructor teaching?</span>';
-    $tab .= '<span class="Cell">What do you recommend the instructor to do to improve their teaching?</span>';
-    $tab .= '<span class="Cell">What do you like about the labs?</span>';
-    $tab .= '<span class="Cell">What do you recommend the lab instructors to do to improve their lab teaching?</span>';
-    $tab .= '</div>';
-    while ($row = $result->fetch_assoc()) {
-        $tab .= '<div class="Row">';
-        $tab .= '<span class="Cell">' . $row['instructor'] . '</span>';
-        $tab .= '<span class="Cell">' . $row['q1'] . '</span>';
-        $tab .= '<span class="Cell">' . $row['q2'] . '</span>';
-        $tab .= '<span class="Cell">' . $row['q3'] . '</span>';
-        $tab .= '<span class="Cell">' . $row['q4'] . '</span>';
-        $tab .= "</div>";
-    }
-    $tab .= '</div>';
-
->>>>>>> Pat
 ?>
 
 
@@ -103,13 +71,8 @@ if ($conn->connect_error) {
 
 
                 <div class="block"><p>Student Feedback</p>
-<<<<<<< HEAD
                   <br>
                   <div class="center"><?php echo $tab; ?></div>
-=======
-                    <br>
-                    <div class="center"><?php echo $tab; ?></div>
->>>>>>> Pat
                 </div>
 
 
