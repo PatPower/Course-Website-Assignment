@@ -232,31 +232,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-                <div class="block"><p>Get Marks for Individual Student</p>
-                    <!--student dropdown-->
-                    <form action="" method="post" class="center">
-                        <span> Student
-                            <?php
-                            $query = "SELECT username FROM login WHERE accountType='student'";
-                            $result = mysqli_query($conn, $query);
-                            echo "<select name='SearchStud'>";
-                            while ($row = $result->fetch_assoc()) {
-                                echo "<option value=" . $row["username"] . ">" . $row["username"] . "</option>";
-                            }
-                            echo "</select>";
-                            ?>
-                            <span><input type="submit" Value="Submit" name="SearchStudSub"></span>
-                        </span>
-                    </form>
-                    <div class="center">
-                        <?php
-                        if (!empty($tab)) {
-                            echo "These marks belong to  $student ";
-                            echo '<br><div>' . $tab . "</div><br>";
-                        }
-                        ?>
-                    </div>
-                </div>
 
                 <div class="block"><p>Get Marks All Students</p>
                     <!--student dropdown-->
@@ -291,14 +266,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             ?>
                         </span>
                     </form>
-                    <div class="center">
-                        <?php
-                        if (!empty($tab)) {
-                            echo "These marks belong to  $student ";
-                            echo '<br><div>' . $tab . "</div><br>";
-                        }
-                        ?>
-                    </div>
                 </div>
                 
                 <div class="block"><p>Remark Requests</p>

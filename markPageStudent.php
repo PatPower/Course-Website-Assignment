@@ -7,14 +7,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // submit add marks form
         $comment = $_POST["comment"];
         $name = $_POST['remarkOption'];
-        $query = "SELECT courseWork FROM remarkrequests WHERE username='".$_SESSION['username']."' and coursework='$name'";
+        $query = "SELECT courseWork FROM remarkrequests WHERE username='" . $_SESSION['username'] . "' and coursework='$name'";
         $result = mysqli_query($conn, $query);
         if ($result) {
             $rowcount = mysqli_num_rows($result);
             if ($rowcount > 0) {
-              $_SESSION['error'] = "There is already a remark requested for ".$name."!";
+                $_SESSION['error'] = "There is already a remark requested for " . $name . "!";
             } else {
-                $addremark1 = "INSERT INTO remarkrequests VALUES ('".$_SESSION['username']."','$name','$comment',0)";
+                $addremark1 = "INSERT INTO remarkrequests VALUES ('" . $_SESSION['username'] . "','$name','$comment',0)";
                 $addremark = mysqli_query($conn, $addremark1);
                 $_SESSION['error'] = "Remark has been added!";
             }
@@ -92,15 +92,15 @@ if ($conn->connect_error) {
                 <div class="block"><p>Your Marks</p>
                     <?php
                     if (!empty($_SESSION['error'])) {
-                        echo '<div class="error">'.$_SESSION['error']."</div>";
-                    } 
+                        echo '<div class="error">' . $_SESSION['error'] . "</div>";
+                    }
                     echo "<div class='center'>";
                     echo '<div class="table">';
-                    echo  "<div class='t_header'>";
+                    echo "<div class='t_header'>";
                     $query = "SELECT name FROM coursework";
                     $result = mysqli_query($conn, $query);
                     while ($row = $result->fetch_assoc()) {
-                        echo  "<span class='Cell' id='Col1head'>".$row["name"].".</span>";
+                        echo "<span class='Cell' id='Col1head'>" . $row["name"] . ".</span>";
                     }
                     $query = "SELECT name FROM coursework";
                     $result = mysqli_query($conn, $query);
@@ -162,6 +162,5 @@ if ($conn->connect_error) {
                 <h2> Dwight </h2>
             </div>
         </footer>
-    </div>
-</body>
+    </body>
 </html>

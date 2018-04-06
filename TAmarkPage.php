@@ -1,7 +1,7 @@
 <?php
 include("config.php");
 session_start();
-
+unset($_SESSION['error']);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -210,33 +210,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   </form>
                 </div>
 
-
-                <div class="block"><p>Get Marks for Individual Student</p>
-                  <!--student dropdown-->
-                  <form action="" method="post" class="center">
-                    <span> Student
-                    <?php
-                        $query = "SELECT username FROM login WHERE accountType='student'";
-                        $result = mysqli_query($conn, $query);
-                        echo "<select name='SearchStud'>";
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<option value=".$row["username"].">".$row["username"]."</option>";
-                        }
-                        echo "</select>";
-                    ?>
-                    <span><input type="submit" Value="Submit" name="SearchStudSub"></span>
-                  </span>
-                </form>
-                <div class="center">
-                <?php
-                if (!empty($tab)) {
-                  echo "These marks belong to  $student ";
-                    echo '<br><div>'.$tab."</div><br>";
-                }
-                ?>
-              </div>
+                <div class="block"><p>Get Marks All Students</p>
+                    <!--student dropdown-->
+                    <form action="" method="post" class="center">
+                        <span> Student
+                            <?php
+                            echo '<div class="table">';
+                            echo  "<div class='t_header'>";
+                            $query = "SELECT name FROM coursework";
+                            $result = mysqli_query($conn, $query);
+                            echo  "<span class='Cell' id='Col1head'>Username</span>";
+                            while ($row = $result->fetch_assoc()) {
+                                echo  "<span class='Cell' id='Col1head'>".$row["name"]."</span>";
+                            }
+                            echo "</div>";
+                            $query = "SELECT username FROM login WHERE accountType='student'";
+                            $userresult = mysqli_query($conn, $query);
+                            while ($userrow = $userresult->fetch_assoc()) {
+                                echo "<div class='Row'>";
+                                echo  "<span class='Cell' id='Col1head'>".$userrow["username"]."</span>";
+                                $query = "SELECT name FROM coursework";
+                                $workresult = mysqli_query($conn, $query);
+                                while ($workrow = $workresult->fetch_assoc()) {
+                                    $query = "SELECT mark FROM marks WHERE username='".$userrow['username']."' and coursework='".$workrow["name"]."'";
+                                    $markresult = mysqli_query($conn, $query);
+                                    $mark = $markresult->fetch_assoc();
+                                    echo "<span class='Cell'>".$mark["mark"]."</span>";
+                                }
+                                echo "</div>";
+                            }
+                            echo '</div>';
+                            ?>
+                        </span>
+                    </form>
                 </div>
-
                 <div class="block"><p>Remark Requests</p>
                   <div class="center">
                   <?php
