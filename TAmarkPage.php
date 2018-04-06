@@ -92,6 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <script type="text/javascript" src="index.js" ></script>
         <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
         <title>Marks</title>
+        <title>TA Marks</title>
     </head>
 
     <body>

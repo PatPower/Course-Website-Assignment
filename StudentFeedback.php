@@ -2,7 +2,10 @@
 include("config.php");
 session_start();
 unset($_SESSION['error']);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2c6ed1e8f12c1165ae085ac82c359512124ce006
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);

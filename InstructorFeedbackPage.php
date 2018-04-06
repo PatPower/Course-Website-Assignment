@@ -8,7 +8,10 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+<<<<<<< HEAD
 $tab = '';
+=======
+>>>>>>> 2c6ed1e8f12c1165ae085ac82c359512124ce006
 $query = "SELECT * FROM Annon_feed";
 $result = mysqli_query($conn, $query);
 $tab .= '<div class="table">';
