@@ -1,4 +1,5 @@
 <?php
+unset($_SESSION['error']);
 include("config.php");
 session_start();
 

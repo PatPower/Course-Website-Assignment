@@ -1,4 +1,5 @@
 <?php
+unset($_SESSION['error']);
 include("config.php");
 session_start();
 
@@ -13,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
   $an3 = $_POST['Question3'];
   $an4 = $_POST['Question4'];
 
-  if ((isset($an1)) and (isset($an2)) and (isset($an3)) and (isset($an4)) and (isset($InUName))) {
+  if ((isset($an1)) and (isset($an2)) and (isset($an3)) and (isset($an4))) {
       $addFeed1 = "INSRT INTO Annon_feed VALUES ('$uName','$an1','$an2','$an3','$an4','$InUName')";
       $addFeed = mysqli_query($conn, $addFeed1);
       $_SESSION['error'] = "Submission Successful!";
@@ -95,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                   <br>
                   <div><input type="text" name="Question3"></div>
                 </div>
-                
+
                 <br>
                 <input type="submit" value="Submit">
                 <?php
