@@ -19,7 +19,7 @@
 }
 
 
-.SignInBox input[type="text"], .NewUserBox input[type="text"] {
+.SignInBox input[type="text"], .NewUserBox input[type="text"],.SignInBox input[type="password"] {
   color: white;
   border: solid 1px;
 }

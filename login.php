@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <div>Username <input type="text" name="User" value="<?php if (isset($_POST['User'])) echo $_POST['User']; ?>"></div>
                 <br>
-                <div>Password <input type="text" name="Pass"></div>
+                <div>Password <input type="password" name="Pass"></div>
                 <br>
                 <div class = "LogInButtons">
                     <input type="submit" Value="Submit">
