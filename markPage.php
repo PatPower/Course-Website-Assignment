@@ -127,7 +127,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
                 <div class="block"><p>Add Mark</p>
-                  <form action="" method="post">
+                  <br>
+                  <form action="" method="post" class="center">
                   <!--student dropdown-->
                     <span> Student:
                     <?php
@@ -171,7 +172,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
                 <div class="block"><p>Update Mark</p>
-                  <form action="" method="post">
+                  <br>
+                  <form action="" method="post" class="center">
                   <!--student dropdown-->
                   <span> Student:
                   <?php
@@ -213,7 +215,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
                 <div class="block"><p>Add Course Work</p>
-                  <form action="" method="post">
+                  <br>
+                  <form action="" method="post" class="center">
                   <span>Assignment Name:<input type="text" name="NewAss"></span>
                   <span><input type="submit" Value="Submit" name="AddCSub"></span>
                   <?php
@@ -230,7 +233,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <div class="block"><p>Search for Students Work</p>
                   <!--student dropdown-->
-                  <form action="" method="post">
+                  <form action="" method="post" class="center">
                     <span> Student
                     <?php
                         $query = "SELECT username FROM login WHERE accountType='student'";
@@ -244,11 +247,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <span><input type="submit" Value="Submit" name="SearchStudSub"></span>
                   </span>
                 </form>
+                <div class="center">
                 <?php
                 if (!empty($tab)) {
-                    echo '<br><div class="Qmarks">'.$tab."</div>";
+                  echo "These marks belong to  $student ";
+                    echo '<br><div>'.$tab."</div><br>";
                 }
                 ?>
+              </div>
                 </div>
 
 

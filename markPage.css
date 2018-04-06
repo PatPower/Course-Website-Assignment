@@ -9,6 +9,11 @@
 .center {
     text-align: center;
 }
+
+.center div {
+  margin: auto;
+}
+
 .centerInfo {
     margin-left: 20px;
     background: rgba(0,0,0,0.1);
@@ -31,6 +36,7 @@
     padding: 0px;
     color: black;
 }
+
 
 .page {
     display: flex;
@@ -87,6 +93,21 @@
     padding: 10px;
     text-decoration: none;
     float: right;
+}
+
+.table {
+  display: table;
+ }
+
+.Cell {
+  border: 1px solid black;
+  display: table-cell;
+  padding: 10px;
+  text-align: center;
+}
+
+.Row, .t_header {
+  display: table-row;
 }
 
 
