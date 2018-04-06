@@ -61,7 +61,7 @@
             }
             if ($_SESSION['accountType'] == 'student') {
               /*file name = markPageStudent.php */
-              echo "<a href=''><p>Click here for mark info<p></a>";
+              echo "<a href='markPageStudent.php'><p>Click here for mark info<p></a>";
             }
         ?>
 

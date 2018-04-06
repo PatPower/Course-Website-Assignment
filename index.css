@@ -492,6 +492,9 @@ p {
  .left, .vline{
    display: none
  }
+ .remove {
+    display: none
+ }
  .anouncmentBlock {
    padding-bottom: 5px;
    background-image: -webkit-linear-gradient(top, CornflowerBlue, CornflowerBlue 25%, transparent 25%, transparent 100%);
