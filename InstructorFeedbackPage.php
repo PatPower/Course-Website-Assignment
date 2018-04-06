@@ -1,13 +1,14 @@
 <?php
-unset($_SESSION['error']);
 include("config.php");
 session_start();
+unset($_SESSION['error']);
 
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
+}
 
-
+$tab = '';
 $query = "SELECT * FROM Annon_feed";
 $result = mysqli_query($conn, $query);
 $tab .= '<div class="table">';

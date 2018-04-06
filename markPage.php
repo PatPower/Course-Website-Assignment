@@ -1,9 +1,10 @@
 <?php
+
+include("config.php");
+session_start();
 unset($_SESSION['error']);
 unset($_SESSION['error1']);
 unset($_SESSION['error2']);
-include("config.php");
-session_start();
 
 // Check connection
 if ($conn->connect_error) {
@@ -270,7 +271,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </span>
                     </form>
                 </div>
-                
+
                 <div class="block"><p>Remark Requests</p>
                     <div class="center">
                         <?php

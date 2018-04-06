@@ -1,7 +1,7 @@
 <?php
-unset($_SESSION['error']);
 include("config.php");
 session_start();
+unset($_SESSION['error']);
 
 // Check connection
 if ($conn->connect_error) {
