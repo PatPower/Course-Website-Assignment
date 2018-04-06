@@ -211,26 +211,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
 
 
-
-
-
-                <div class="block"><p>Add Course Work</p>
-                  <br>
-                  <form action="" method="post" class="center">
-                  <span>Assignment Name:<input type="text" name="NewAss"></span>
-                  <span><input type="submit" Value="Submit" name="AddCSub"></span>
-                  <?php
-                  if (!empty($_SESSION['error2'])) {
-                      echo '<br><div class="error">'.$_SESSION['error2']."</div>";
-                  }
-                  ?>
-                </form>
-                </div>
-
-
-
-
-
                 <div class="block"><p>Get Marks for Individual Student</p>
                   <!--student dropdown-->
                   <form action="" method="post" class="center">
