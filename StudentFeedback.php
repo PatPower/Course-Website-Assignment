@@ -5,19 +5,18 @@ unset($_SESSION['error']);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
+}
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $InUName = $_POST['SEL_instructor'];
+    $an1 = $_POST['Question1'];
+    $an2 = $_POST['Question2'];
+    $an3 = $_POST['Question3'];
+    $an4 = $_POST['Question4'];
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $InUName = $_POST['SEL_instructor'];
-        $an1 = $_POST['Question1'];
-        $an2 = $_POST['Question2'];
-        $an3 = $_POST['Question3'];
-        $an4 = $_POST['Question4'];
-
-        if ((isset($an1)) and ( isset($an2)) and ( isset($an3)) and ( isset($an4)) and ( isset($InUName))) {
-            $addFeed1 = "INSERT INTO Annon_feed VALUES ('$uName','$an1','$an2','$an3','$an4','$InUName')";
-            $addFeed = mysqli_query($conn, $addFeed1);
-            $_SESSION['error'] = "Submission Successful!";
-        }
+    if ((isset($_POST['Question4'])) and ( isset($_POST['Question3'])) and ( isset($_POST['Question2'])) and ( isset($_POST['Question1'])) and ( isset($_POST['SEL_instructor']))) {
+        $addFeed1 = "INSERT INTO Annon_feed VALUES ('$an1','$an2','$an3','$an4','$InUName')";
+        $addFeed = mysqli_query($conn, $addFeed1);
+        $_SESSION['error'] = "Submission Successful!";
     } else {
         $_SESSION['error'] = "Not all questions are answered!";
     }
@@ -92,7 +91,7 @@ if ($conn->connect_error) {
 
                     <div class="block"><p>What do you recommend the lab instructors to do to improve their lab teaching?</p>
                         <br>
-                        <div><input type="text" name="Question3"></div>
+                        <div><input type="text" name="Question4"></div>
                     </div>
 
                     <br>
