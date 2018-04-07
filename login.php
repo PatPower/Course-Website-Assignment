@@ -37,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="SignIn.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
         <title> CSCB20 SignIn </title>
     </head>
